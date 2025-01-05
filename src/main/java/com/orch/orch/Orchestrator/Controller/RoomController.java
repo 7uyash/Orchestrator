@@ -14,6 +14,12 @@ public class RoomController {
     @Autowired
     private RoomServices roomService;
 
+
+    @GetMapping
+    public List<Room> getAllRooms() {
+        return roomService.getAllRooms();
+    }
+
     @GetMapping("/search")
     public ResponseEntity<List<Room>> searchRooms(
             @RequestParam String location,
@@ -21,3 +27,4 @@ public class RoomController {
         return ResponseEntity.ok(roomService.searchRooms(location, maxPrice));
     }
 }
+

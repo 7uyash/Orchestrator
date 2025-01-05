@@ -2,6 +2,7 @@ package com.orch.orch.Orchestrator.Service;
 
 import com.orch.orch.Orchestrator.Entities.Application;
 import com.orch.orch.Orchestrator.Repository.ApplicationRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class ApplicationService {
         return true;
     }
 
+    @Transactional
     public boolean cancelApplication(Long applicationId) {
         Optional<Application> application = applicationRepository.findById(applicationId);
         if (application.isPresent()) {
@@ -36,6 +38,10 @@ public class ApplicationService {
 
     public List<Application> getApplicationsByUser(Long userId) {
         return applicationRepository.findByUserId(userId);
+    }
+
+    public List<Application> getAllApplications() {
+        return applicationRepository.findAll();
     }
 }
 

@@ -14,6 +14,11 @@ public class ApplicationController {
     @Autowired
     private ApplicationService applicationService;
 
+
+    @GetMapping
+    public List<Application> getAllApplications() {
+        return applicationService.getAllApplications();
+    }
     @PostMapping("/apply")
     public ResponseEntity<String> applyForRoom(@RequestParam Long userId, @RequestParam Long roomId) {
         boolean success = applicationService.applyForRoom(userId, roomId);

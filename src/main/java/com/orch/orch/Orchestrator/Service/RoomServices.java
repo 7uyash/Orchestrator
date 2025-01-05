@@ -15,4 +15,9 @@ public class RoomServices {
     public List<Room> searchRooms(String location, double maxPrice) {
         return roomRepository.findByLocationAndPricePerMonthLessThanEqual(location, maxPrice);
     }
+
+
+    public List<Room> getAllRooms() {
+        return roomRepository.findAll();
+    }
 }
